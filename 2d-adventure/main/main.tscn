@@ -4,9 +4,11 @@
 [ext_resource type="Script" uid="uid://dkvyk1vhv5e1a" path="res://main/main.gd" id="1_c651c"]
 [ext_resource type="PackedScene" uid="uid://c8pb6nwxoecde" path="res://wall/wall.tscn" id="1_pjrb6"]
 [ext_resource type="PackedScene" uid="uid://c88xdlks3mvuy" path="res://coin/coin.tscn" id="2_xwkvk"]
+[ext_resource type="PackedScene" uid="uid://cdk2dblf5bs8a" path="res://score/score.tscn" id="5_3wy1v"]
 
 [node name="Main" type="Node" unique_id=1534004320]
 script = ExtResource("1_c651c")
+coin_scene = ExtResource("2_xwkvk")
 
 [node name="Wall1" parent="." unique_id=612209518 instance=ExtResource("1_pjrb6")]
 position = Vector2(448.00003, 455.00003)
@@ -26,5 +28,7 @@ position = Vector2(700, 284)
 
 [node name="Player" parent="." unique_id=351380148 instance=ExtResource("1_53q0u")]
 position = Vector2(505, 329)
+
+[node name="Score" parent="." unique_id=376589245 instance=ExtResource("5_3wy1v")]
 
 [connection signal="collected" from="Coin" to="." method="_on_coin_collected"]

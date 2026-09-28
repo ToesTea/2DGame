@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://etvxlui11oxm" path="res://player/prototype_character.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://cbo0dcwehsbod" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="PackedScene" uid="uid://c2o7afsxtdxuo" path="res://bullet/bullet.tscn" id="2_g1dw6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkbax"]
 atlas = ExtResource("1_oul6g")
@@ -167,6 +168,7 @@ size = Vector2(34, 49)
 
 [node name="Player" type="CharacterBody2D" unique_id=351380148 groups=["player"]]
 script = ExtResource("1_rkbax")
+bullet_scene = ExtResource("2_g1dw6")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1640061769]

@@ -21,3 +21,6 @@ func _on_body_entered(body: Node2D) -> void:
 		print_debug("ist der player!")
 		collected.emit(value)
 		body.add_coin(value)
+		# $CollisionShape2D.disabled = true
+		$CollisionShape2D.set_deferred("disabled", true)
+		queue_free()
