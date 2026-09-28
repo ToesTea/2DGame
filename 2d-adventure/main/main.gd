@@ -2,11 +2,13 @@ class_name Main
 extends Node
 
 @export var coin_scene: PackedScene
+@export var enemy_scene: PackedScene
 var score := 0
 @onready var hud = $Score
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	spawn_enemy()
 	pass # Replace with function body.
 
 
@@ -31,4 +33,13 @@ func _on_coin_collected(value: int) -> void:
 func _add_score(points: int) -> void:
 	score += points
 	hud.update_score(score)
+	
+func spawn_enemy() -> void:
+	var enemy = enemy_scene.instantiate()
+	add_child(enemy)
+
+	enemy.position = Vector2(
+		randf_range(0, 1152),
+		randf_range(0, 648)
+	)
 	
