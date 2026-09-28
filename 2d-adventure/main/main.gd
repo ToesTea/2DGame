@@ -38,8 +38,6 @@ func spawn_enemy() -> void:
 	var enemy = enemy_scene.instantiate()
 	add_child(enemy)
 
-	enemy.position = Vector2(
-		randf_range(0, 1152),
-		randf_range(0, 648)
-	)
+	enemy.position.x = randf() * 500
+	enemy.position.y = randf() * 500
 	
