@@ -3,14 +3,32 @@ extends Area2D
 @export var speed := 600.0
 var direction := Vector2.UP
 
-# Called when the node enters the scene tree for the first time.
+var from_player := true   # true = Spieler-Schuss, false = Gegner-Schuss
+var travelled := 0.0      # wie weit das Geschoss schon geflogen ist
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	if from_player:
+		add_to_group("player_weapon")
 
 
 func _process(delta: float) -> void:
 	position += direction * speed * delta
-	var size := get_viewport_rect().size
-	
-	if global_position.x < 0 or global_position.x > size.x or global_position.y < 0 or global_position.y > size.y:
+
+	# Geschoss nach 700 Pixeln geloescht.
+	travelled += speed * delta
+	if travelled > 700:
 		queue_free()
+
+	# schauen, was das Geschoss gerade beruehrt
+	for body in get_overlapping_bodies():
+		if body.is_in_group("enemy"):
+			if from_player:
+				body.health -= 1
+				queue_free()
+		elif body.is_in_group("player"):
+			if from_player == false:
+				body.health -= 10
+				queue_free()
+		else:
+			queue_free()

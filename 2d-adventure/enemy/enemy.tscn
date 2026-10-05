@@ -1,11 +1,62 @@
 [gd_scene format=3 uid="uid://bnb16en0p06c2"]
 
 [ext_resource type="Script" uid="uid://cqaxseu2o8du1" path="res://enemy/enemy.gd" id="1_2mvqj"]
-[ext_resource type="Texture2D" uid="uid://cof83cybjy77k" path="res://assets/enemy.png" id="2_ofsxj"]
+[ext_resource type="Texture2D" uid="uid://cgry5udvxvgfq" path="res://assets/prototype_character.png" id="2_ofsxj"]
+[ext_resource type="PackedScene" uid="uid://c2o7afsxtdxuo" path="res://bullet/bullet.tscn" id="2_ppra6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppra6"]
+atlas = ExtResource("2_ofsxj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p200p"]
+atlas = ExtResource("2_ofsxj")
+region = Rect2(0, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmsee"]
+atlas = ExtResource("2_ofsxj")
+region = Rect2(32, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wwld"]
+atlas = ExtResource("2_ofsxj")
+region = Rect2(64, 288, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6vaqo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppra6")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p200p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmsee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wwld")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppra6"]
 
 [node name="enemy" type="CharacterBody2D" unique_id=263211529]
-script = ExtResource("1_2mvqj")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=426663691]
 scale = Vector2(5, 5)
-texture = ExtResource("2_ofsxj")
+script = ExtResource("1_2mvqj")
+bullet_scene = ExtResource("2_ppra6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1072603620]
+position = Vector2(0.19999999, 0)
+sprite_frames = SubResource("SpriteFrames_6vaqo")
+animation = &"walk"
+frame_progress = 0.9693817
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1074124915]
+shape = SubResource("RectangleShape2D_ppra6")

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c8pb6nwxoecde" path="res://wall/wall.tscn" id="1_pjrb6"]
 [ext_resource type="PackedScene" uid="uid://c88xdlks3mvuy" path="res://coin/coin.tscn" id="2_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://bnb16en0p06c2" path="res://enemy/enemy.tscn" id="3_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://80nxylac8c42" path="res://tilemap/terrain.tscn" id="4_4dugh"]
 [ext_resource type="PackedScene" uid="uid://cdk2dblf5bs8a" path="res://score/score.tscn" id="5_3wy1v"]
 
 [node name="Main" type="Node" unique_id=1534004320]
@@ -12,18 +13,9 @@ script = ExtResource("1_c651c")
 coin_scene = ExtResource("2_xwkvk")
 enemy_scene = ExtResource("3_kfbq2")
 
-[node name="Wall1" parent="." unique_id=612209518 instance=ExtResource("1_pjrb6")]
-position = Vector2(448.00003, 455.00003)
-rotation = 0.71257436
-
-[node name="Wall2" parent="." unique_id=2041782830 instance=ExtResource("1_pjrb6")]
-position = Vector2(839, 424.00003)
-rotation = -0.74658227
-
-[node name="Wall3" parent="." unique_id=1819650202 instance=ExtResource("1_pjrb6")]
-position = Vector2(501.00006, 149.00002)
-rotation = -0.064837724
-scale = Vector2(1.0016991, 0.9958083)
+[node name="Terrain" parent="." unique_id=232141308 instance=ExtResource("4_4dugh")]
+position = Vector2(-527, -253)
+scale = Vector2(1.8558092, 1.8558092)
 
 [node name="Coin" parent="." unique_id=937382214 instance=ExtResource("2_xwkvk")]
 position = Vector2(700, 284)
@@ -32,5 +24,17 @@ position = Vector2(700, 284)
 position = Vector2(505, 329)
 
 [node name="Score" parent="." unique_id=376589245 instance=ExtResource("5_3wy1v")]
+
+[node name="Wall" parent="." unique_id=612209518 instance=ExtResource("1_pjrb6")]
+position = Vector2(999, 616)
+
+[node name="Wall2" parent="." unique_id=1281901317 instance=ExtResource("1_pjrb6")]
+position = Vector2(694, 615)
+
+[node name="Wall3" parent="." unique_id=1903867519 instance=ExtResource("1_pjrb6")]
+position = Vector2(387, 616)
+
+[node name="Wall4" parent="." unique_id=1660557327 instance=ExtResource("1_pjrb6")]
+position = Vector2(81, 614)
 
 [connection signal="collected" from="Coin" to="." method="_on_coin_collected"]

@@ -5,6 +5,7 @@ extends Node
 @export var enemy_scene: PackedScene
 var score := 0
 @onready var hud = $Score
+@onready var player = get_tree().get_first_node_in_group("player")   # NEU
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,7 +15,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	# HUD jedes Frame aktualisieren
+	hud.get_node("HealthBar").value = player.health
+	hud.get_node("WeaponLabel").text = "Waffe: " + player.weapon
 
 
 func _on_coin_collected(value: int) -> void:
@@ -33,11 +36,10 @@ func _on_coin_collected(value: int) -> void:
 func _add_score(points: int) -> void:
 	score += points
 	hud.update_score(score)
-	
+
 func spawn_enemy() -> void:
 	var enemy = enemy_scene.instantiate()
 	add_child(enemy)
 
 	enemy.position.x = randf() * 500
 	enemy.position.y = randf() * 500
-	

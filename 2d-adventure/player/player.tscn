@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cbo0dcwehsbod" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="PackedScene" uid="uid://c2o7afsxtdxuo" path="res://bullet/bullet.tscn" id="2_g1dw6"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6vaqo"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkbax"]
 atlas = ExtResource("1_oul6g")
 region = Rect2(0, 0, 32, 32)
@@ -171,6 +173,20 @@ script = ExtResource("1_rkbax")
 bullet_scene = ExtResource("2_g1dw6")
 metadata/_edit_group_ = true
 
+[node name="SwordArea" type="Area2D" parent="." unique_id=1046518666]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordArea" unique_id=332441715]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_6vaqo")
+
+[node name="ColorRect" type="ColorRect" parent="SwordArea" unique_id=1513275757]
+offset_left = -41.595
+offset_top = -42.325
+offset_right = -1.5950012
+offset_bottom = -2.3250008
+scale = Vector2(2.08, 2.08)
+color = Color(1, 0, 0, 1)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1640061769]
 texture_filter = 1
 scale = Vector2(5, 5)
@@ -181,3 +197,5 @@ frame_progress = 0.20828839
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=429892995]
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_wupek")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=134057421]
