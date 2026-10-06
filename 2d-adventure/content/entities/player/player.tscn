@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cx1hp67bnpmau"]
 
-[ext_resource type="Texture2D" uid="uid://etvxlui11oxm" path="res://player/prototype_character.png" id="1_oul6g"]
-[ext_resource type="Script" uid="uid://cbo0dcwehsbod" path="res://player/player.gd" id="1_rkbax"]
-[ext_resource type="PackedScene" uid="uid://c2o7afsxtdxuo" path="res://bullet/bullet.tscn" id="2_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://etvxlui11oxm" path="res://content/entities/player/prototype_character.png" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://cbo0dcwehsbod" path="res://content/entities/player/player.gd" id="1_rkbax"]
+[ext_resource type="PackedScene" uid="uid://c2o7afsxtdxuo" path="res://content/entities/bullet/bullet.tscn" id="2_g1dw6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6vaqo"]
 

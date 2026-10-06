@@ -25,7 +25,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = direction * SPEED
+	velocity = direction * Settings.speed
 
 	var left_right := Input.get_axis("move_left", "move_right")
 	var up_down := Input.get_axis("move_up", "move_down")

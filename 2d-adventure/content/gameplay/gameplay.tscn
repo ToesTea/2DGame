@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://brgavworkgh5y"]
+
+[ext_resource type="Script" uid="uid://dkvyk1vhv5e1a" path="res://content/gameplay/gameplay.gd" id="1_uk44f"]
+[ext_resource type="PackedScene" uid="uid://c88xdlks3mvuy" path="res://content/entities/coin/coin.tscn" id="2_yvprt"]
+[ext_resource type="PackedScene" uid="uid://bnb16en0p06c2" path="res://content/entities/enemy/enemy.tscn" id="3_r5as3"]
+[ext_resource type="PackedScene" uid="uid://80nxylac8c42" path="res://content/levels/level_01/level_01.tscn" id="4_nimes"]
+[ext_resource type="PackedScene" uid="uid://cx1hp67bnpmau" path="res://content/entities/player/player.tscn" id="5_2okcp"]
+[ext_resource type="PackedScene" uid="uid://cdk2dblf5bs8a" path="res://ui/score/score.tscn" id="6_vyivm"]
+[ext_resource type="PackedScene" uid="uid://c8pb6nwxoecde" path="res://content/entities/wall/wall.tscn" id="7_uqgqx"]
+
+[node name="Main" type="Node" unique_id=1534004320]
+script = ExtResource("1_uk44f")
+coin_scene = ExtResource("2_yvprt")
+enemy_scene = ExtResource("3_r5as3")
+
+[node name="Terrain" parent="." unique_id=232141308 instance=ExtResource("4_nimes")]
+position = Vector2(-527, -253)
+scale = Vector2(1.8558092, 1.8558092)
+
+[node name="Coin" parent="." unique_id=937382214 instance=ExtResource("2_yvprt")]
+position = Vector2(700, 284)
+
+[node name="Player" parent="." unique_id=351380148 instance=ExtResource("5_2okcp")]
+position = Vector2(505, 329)
+
+[node name="Score" parent="." unique_id=376589245 instance=ExtResource("6_vyivm")]
+
+[node name="Wall" parent="." unique_id=612209518 instance=ExtResource("7_uqgqx")]
+position = Vector2(999, 616)
+
+[node name="Wall2" parent="." unique_id=1281901317 instance=ExtResource("7_uqgqx")]
+position = Vector2(694, 615)
+
+[node name="Wall3" parent="." unique_id=1903867519 instance=ExtResource("7_uqgqx")]
+position = Vector2(387, 616)
+
+[node name="Wall4" parent="." unique_id=1660557327 instance=ExtResource("7_uqgqx")]
+position = Vector2(81, 614)
+
+[connection signal="collected" from="Coin" to="." method="_on_coin_collected"]

@@ -1,40 +1,14 @@
-[gd_scene format=3 uid="uid://brgavworkgh5y"]
+[gd_scene format=3 uid="uid://cvralqt5cww42"]
 
-[ext_resource type="PackedScene" uid="uid://cx1hp67bnpmau" path="res://player/player.tscn" id="1_53q0u"]
-[ext_resource type="Script" uid="uid://dkvyk1vhv5e1a" path="res://main/main.gd" id="1_c651c"]
-[ext_resource type="PackedScene" uid="uid://c8pb6nwxoecde" path="res://wall/wall.tscn" id="1_pjrb6"]
-[ext_resource type="PackedScene" uid="uid://c88xdlks3mvuy" path="res://coin/coin.tscn" id="2_xwkvk"]
-[ext_resource type="PackedScene" uid="uid://bnb16en0p06c2" path="res://enemy/enemy.tscn" id="3_kfbq2"]
-[ext_resource type="PackedScene" uid="uid://80nxylac8c42" path="res://tilemap/terrain.tscn" id="4_4dugh"]
-[ext_resource type="PackedScene" uid="uid://cdk2dblf5bs8a" path="res://score/score.tscn" id="5_3wy1v"]
+[ext_resource type="Script" uid="uid://cvhal16vawjm8" path="res://main/main.gd" id="1_53q0u"]
+[ext_resource type="PackedScene" uid="uid://car0qwswnlp78" path="res://ui/menus/main_menu/main_menu.tscn" id="2_3wy1v"]
+[ext_resource type="PackedScene" uid="uid://dj1pyns3f1tk6" path="res://ui/menus/settings_menu/settings_menu.tscn" id="3_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://c0ltsnreq08qa" path="res://ui/menus/pause_menu/pause_menu.tscn" id="4_4dugh"]
+[ext_resource type="PackedScene" uid="uid://brgavworkgh5y" path="res://content/gameplay/gameplay.tscn" id="5_67ri8"]
 
-[node name="Main" type="Node" unique_id=1534004320]
-script = ExtResource("1_c651c")
-coin_scene = ExtResource("2_xwkvk")
-enemy_scene = ExtResource("3_kfbq2")
-
-[node name="Terrain" parent="." unique_id=232141308 instance=ExtResource("4_4dugh")]
-position = Vector2(-527, -253)
-scale = Vector2(1.8558092, 1.8558092)
-
-[node name="Coin" parent="." unique_id=937382214 instance=ExtResource("2_xwkvk")]
-position = Vector2(700, 284)
-
-[node name="Player" parent="." unique_id=351380148 instance=ExtResource("1_53q0u")]
-position = Vector2(505, 329)
-
-[node name="Score" parent="." unique_id=376589245 instance=ExtResource("5_3wy1v")]
-
-[node name="Wall" parent="." unique_id=612209518 instance=ExtResource("1_pjrb6")]
-position = Vector2(999, 616)
-
-[node name="Wall2" parent="." unique_id=1281901317 instance=ExtResource("1_pjrb6")]
-position = Vector2(694, 615)
-
-[node name="Wall3" parent="." unique_id=1903867519 instance=ExtResource("1_pjrb6")]
-position = Vector2(387, 616)
-
-[node name="Wall4" parent="." unique_id=1660557327 instance=ExtResource("1_pjrb6")]
-position = Vector2(81, 614)
-
-[connection signal="collected" from="Coin" to="." method="_on_coin_collected"]
+[node name="Main" type="Node" unique_id=465828237]
+script = ExtResource("1_53q0u")
+main_menu_scene = ExtResource("2_3wy1v")
+settings_scene = ExtResource("3_kfbq2")
+pause_menu_scene = ExtResource("4_4dugh")
+gameplay_scene = ExtResource("5_67ri8")

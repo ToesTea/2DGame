@@ -1,45 +1,73 @@
-class_name Main
 extends Node
 
-@export var coin_scene: PackedScene
-@export var enemy_scene: PackedScene
-var score := 0
-@onready var hud = $Score
-@onready var player = get_tree().get_first_node_in_group("player")   # NEU
+@export var main_menu_scene: PackedScene
+@export var settings_scene: PackedScene
+@export var pause_menu_scene: PackedScene
+@export var gameplay_scene: PackedScene
+
+var _current: Node
+var _gameplay: Node
+var _pause_menu: Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	spawn_enemy()
-	pass # Replace with function body.
-
+	_show_main_menu()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# HUD jedes Frame aktualisieren
-	hud.get_node("HealthBar").value = player.health
-	hud.get_node("WeaponLabel").text = "Waffe: " + player.weapon
+	pass
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause") and _is_gameplay_active():
+		_open_pause_menu()
 
-func _on_coin_collected(value: int) -> void:
-	print_debug("coin collected!!!")
-	_add_score(value)
+func _show_main_menu() -> void:
+	var main_menu := main_menu_scene.instantiate()
+	main_menu.start_pressed.connect(_on_main_menu_start_pressed)
+	main_menu.settings_pressed.connect(_on_main_menu_settings_pressed)
+	main_menu.exit_pressed.connect(_on_main_menu_exit_pressed)
+	_switch_to(main_menu)
 
-	var coin: Coin = coin_scene.instantiate()
-	coin.collected.connect(_on_coin_collected)
+func _open_pause_menu() -> void:
+	_pause_menu = pause_menu_scene.instantiate()
+	_pause_menu.resume_pressed.connect(_on_pause_menu_resume_pressed)
+	_pause_menu.main_menu_pressed.connect(_on_pause_menu_main_menu_pressed)
+	add_child(_pause_menu)
+	pass
 
-	# random position
-	coin.position.x = randf() * 500
-	coin.position.y = randf() * 500
-	add_child(coin)
+func _on_main_menu_start_pressed() -> void:
+	_gameplay = gameplay_scene.instantiate()
+	_switch_to(_gameplay)
 
+func _on_main_menu_settings_pressed() -> void:
+	print_debug("TODO")
+	pass
 
-func _add_score(points: int) -> void:
-	score += points
-	hud.update_score(score)
+func _close_pause_menu() -> void:
+	print_debug("TODO")
+	pass
 
-func spawn_enemy() -> void:
-	var enemy = enemy_scene.instantiate()
-	add_child(enemy)
+func _on_main_menu_exit_pressed() -> void:
+	get_tree().quit()
+	
+func _on_pause_menu_resume_pressed() -> void:
+	get_tree().paused = false
+	_pause_menu.queue_free()
+	_pause_menu = null
+	pass
 
-	enemy.position.x = randf() * 500
-	enemy.position.y = randf() * 500
+func _on_pause_menu_main_menu_pressed() -> void:
+	_close_pause_menu()
+	_show_main_menu()
+	pass
+
+func _is_gameplay_active() -> bool:
+	return is_instance_valid(_gameplay) and _current == _gameplay
+
+func _switch_to(next: Node) -> void:
+	if is_instance_valid(_current):
+		_current.queue_free()
+	if _current == _gameplay:
+		_gameplay = null
+	_current = next
+	add_child(_current)

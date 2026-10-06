@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5ukbkeawt0xu"
-path="res://.godot/imported/wall_long.png-400290352a0e0f8a2f5961c708fa57d4.ctex"
+uid="uid://d0pimer7iwpwr"
+path="res://.godot/imported/tilemap_packed.png-5664a01e047d979bc76c01078de73160.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wall/wall_long.png"
-dest_files=["res://.godot/imported/wall_long.png-400290352a0e0f8a2f5961c708fa57d4.ctex"]
+source_file="res://content/levels/shared/tilemap_packed.png"
+dest_files=["res://.godot/imported/tilemap_packed.png-5664a01e047d979bc76c01078de73160.ctex"]
 
 [params]
 
